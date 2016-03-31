@@ -49,5 +49,15 @@ module Looker
       assert Looker::PINKS.rows == data["pinks"]
     end
 
+    test "can't re-define constant" do
+      Looker.create_constants(foo: { bar: true, baz: false })
+      begin
+        Looker.create_constants(foo: { bar: true, baz: false })
+      rescue ArgumentError => e
+      end
+      assert e
+      assert e.message == "Looker::FOO is already defined!"
+    end
+
   end
 end
