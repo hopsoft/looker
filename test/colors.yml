@@ -1,0 +1,23 @@
+primary:
+  red: FF0000
+  blue: 0000FF
+  yellow: FFFF00
+
+reds:
+  indian_red: CD5C5C
+  light_coral: F08080
+  salmon: FA8072
+  dark_salmon: E9967A
+  light_salmon: FFA07A
+  crimson: DC143C
+  red: FF0000
+  fire_brick: B22222
+  dark_red: 8B0000
+
+pinks:
+  pink: FFC0CB
+  light_pink: FFB6C1
+  hot_pink: FF69B4
+  deep_pink: FF1493
+  medium_violet_red: C71585
+  pale_violet_red: DB7093
