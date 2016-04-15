@@ -59,5 +59,17 @@ module Looker
       assert e.message == "Looker::FOO is already defined!"
     end
 
+    test "tables" do
+      Looker.add table_a: {one: 1, two: 2}, table_b: { foo: true, bar: false }
+
+      table_a = Looker.tables.find { |t| t.name == "table_a" }
+      assert !table_a.nil?
+      assert table_a.to_h == {one: 1, two: 2}
+
+      table_b = Looker.tables.find { |t| t.name == "table_b" }
+      assert !table_b.nil?
+      assert table_b.to_h == { foo: true, bar: false }
+    end
+
   end
 end

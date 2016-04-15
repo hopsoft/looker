@@ -9,7 +9,7 @@ module Looker
     attr_reader :name, :const_name, :rows
 
     def self.constant_name(name)
-      name.to_s.gsub(/\s/, "_").gsub(/\W/, "").upcase
+      name.to_s.dup.strip.gsub(/\s/, "_").gsub(/\W/, "").upcase
     end
 
     def initialize(name, rows={})
