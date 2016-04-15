@@ -31,7 +31,7 @@ Looker::ROLES[1]       # => :admin
 Looker::ROLES[:reader] # => 2
 Looker::ROLES[2]       # => :reader
 
-Looker::ROLES[:writer] # => 3
+Looker::ROLES["writer"] # => 3
 Looker::ROLES[3]       # => :writer
 ```
 

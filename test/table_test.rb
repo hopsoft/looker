@@ -17,9 +17,9 @@ module Looker
       assert Looker::Table.new("Foo Bar").name == "Foo Bar"
     end
 
-    test "const_name" do
-      assert @table.const_name == "COLORS"
-      assert Looker::Table.new("Foo Bar").const_name == "FOO_BAR"
+    test "constant_name" do
+      assert @table.constant_name == "COLORS"
+      assert Looker::Table.new("Foo Bar").constant_name == "FOO_BAR"
     end
 
     test "fozen?" do
@@ -55,6 +55,18 @@ module Looker
         :blue   => "#0000FF",
         :yellow => "#FFFF00"
       }
+    end
+
+    test "indifferent access symbol keys accessed by string" do
+      table = Looker::Table.new(:foo, a: true)
+      assert table[:a]
+      assert table["a"]
+    end
+
+    test "indifferent access string keys accessed by symbol" do
+      table = Looker::Table.new(:foo, "a" => true)
+      assert table[:a]
+      assert table["a"]
     end
   end
 end
