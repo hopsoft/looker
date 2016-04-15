@@ -37,6 +37,9 @@ Looker::ROLES[:writer]  # => 3
 Looker::ROLES["writer"] # => 3
 Looker::ROLES[3]        # => :writer
 
+Looker::ROLES.name          # => "roles"
+Looker::ROLES.constant_name # => "ROLES"
+
 Looker::ROLES.to_h # => {:admin=>1, :reader=>2, :writer=>3}
 ```
 
