@@ -6,11 +6,7 @@ module Looker
   class << self
     extend Forwardable
     include Enumerable
-    def_delegators :tables, :each
-
-    def tables
-      @tables ||= []
-    end
+    def_delegators :@tables, :each
 
     def add(data={})
       data.each do |name, rows|
@@ -20,7 +16,7 @@ module Looker
           raise ArgumentError.new(message)
         end
         Looker.const_set table.constant_name, table
-        tables << table
+        (@tables ||= []) << table
       end
     end
 
