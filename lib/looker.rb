@@ -2,7 +2,7 @@ require "looker/version"
 require "looker/table"
 
 module Looker
-  def self.create_constants(data={})
+  def self.add(data={})
     data.each do |name, rows|
       table = Looker::Table.new(name, rows)
       if Looker.const_defined?(table.const_name)

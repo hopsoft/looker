@@ -4,8 +4,8 @@ require_relative "test_helper"
 module Looker
   class LookerTest < PryTest::Test
 
-    test "create_constants" do
-      Looker.create_constants(
+    test "add" do
+      Looker.add(
         groups: {
           admin: 1,
           reader: 2,
@@ -32,9 +32,9 @@ module Looker
       assert Looker::ROMAN_NUMERALS["IV"] == :four
     end
 
-    test "create_constants from yaml file" do
+    test "add from yaml file" do
       data = YAML.load(File.read(File.expand_path("../colors.yml", __FILE__)))
-      Looker.create_constants(data)
+      Looker.add(data)
 
       assert Looker.const_defined?(:PRIMARY)
       assert Looker::PRIMARY.is_a?(Looker::Table)
@@ -50,9 +50,9 @@ module Looker
     end
 
     test "can't re-define constant" do
-      Looker.create_constants(foo: { bar: true, baz: false })
+      Looker.add(foo: { bar: true, baz: false })
       begin
-        Looker.create_constants(foo: { bar: true, baz: false })
+        Looker.add(foo: { bar: true, baz: false })
       rescue ArgumentError => e
       end
       assert e
