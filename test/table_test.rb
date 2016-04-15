@@ -25,12 +25,12 @@ module Looker
     test "fozen?" do
       assert @table.frozen?
       assert @table.name.frozen?
-      assert @table.rows.frozen?
+      assert @table.entries.frozen?
       assert @table.send(:dict).frozen?
     end
 
-    test "rows" do
-      assert @table.rows == @colors
+    test "entries" do
+      assert @table.entries == @colors
     end
 
     test "to_a" do

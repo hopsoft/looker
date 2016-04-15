@@ -38,15 +38,15 @@ module Looker
 
       assert Looker.const_defined?(:PRIMARY)
       assert Looker::PRIMARY.is_a?(Looker::Table)
-      assert Looker::PRIMARY.rows == data["primary"]
+      assert Looker::PRIMARY.entries == data["primary"]
 
       assert Looker.const_defined?(:REDS)
       assert Looker::REDS.is_a?(Looker::Table)
-      assert Looker::REDS.rows == data["reds"]
+      assert Looker::REDS.entries == data["reds"]
 
       assert Looker.const_defined?(:PINKS)
       assert Looker::PINKS.is_a?(Looker::Table)
-      assert Looker::PINKS.rows == data["pinks"]
+      assert Looker::PINKS.entries == data["pinks"]
     end
 
     test "can't re-define constant" do

@@ -9,8 +9,8 @@ module Looker
     def_delegators :@tables, :each
 
     def add(data={})
-      data.each do |name, rows|
-        table = Looker::Table.new(name, rows)
+      data.each do |name, entries|
+        table = Looker::Table.new(name, entries)
         if Looker.const_defined?(table.constant_name)
           message = "Looker::#{table.constant_name} is already defined!"
           raise ArgumentError.new(message)

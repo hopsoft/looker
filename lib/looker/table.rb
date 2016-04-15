@@ -4,18 +4,18 @@ module Looker
   class Table
     extend Forwardable
     include Enumerable
-    def_delegators :rows, :each
-    attr_reader :name, :constant_name, :rows
+    def_delegators :entries, :each
+    attr_reader :name, :constant_name, :entries
 
     def self.constant_name(name)
       name.gsub(/\s/, "_").gsub(/\W/, "").upcase
     end
 
-    def initialize(name, rows={})
+    def initialize(name, entries={})
       @name = name.to_s.strip.freeze
       @constant_name = self.class.constant_name(@name).freeze
-      @rows = rows.dup.freeze
-      @dict = rows.invert.merge(rows).freeze
+      @entries = entries.dup.freeze
+      @dict = entries.invert.merge(entries).freeze
       freeze
     end
 
@@ -24,7 +24,7 @@ module Looker
     end
 
     def to_h
-      rows
+      entries
     end
 
     private
