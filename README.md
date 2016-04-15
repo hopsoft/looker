@@ -11,7 +11,7 @@
 
 ## Quick Start
 
-```
+```sh
 gem install looker
 ```
 
@@ -33,6 +33,7 @@ Looker::ROLES[2]       # => :reader
 
 Looker::ROLES[:writer] # => 3
 Looker::ROLES[3]       # => :writer
+```
 
 ## ActiveRecord enums
 
