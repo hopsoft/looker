@@ -17,13 +17,13 @@ gem install looker
 
 ```ruby
 Looker.add roles: {
-  :admin  => 1,
-  :reader => 2,
-  :writer => 3
-}
+    :admin  => 1,
+    :reader => 2,
+    :writer => 3
+  }
 
-# The name (first Hash key) is converted to an upper case contant
-# available on the Looker module
+# The name (first Hash key) & value is converted
+# to an upcase named frozen constant on the Looker module
 
 Looker::ROLES[:admin]  # => 1
 Looker::ROLES[1]       # => :admin
@@ -33,6 +33,61 @@ Looker::ROLES[2]       # => :reader
 
 Looker::ROLES[:writer] # => 3
 Looker::ROLES[3]       # => :writer
+```
+
+__NOTE:__ You can perform lookups using both the key & value.
+
+## Multiple Enumerated Types
+
+It's possible to add multiple enumerated types with a single call to `Looker#add`.
+
+```ruby
+Looker.add(
+  roles: {
+    :admin  => 1,
+    :reader => 2,
+    :writer => 3
+  },
+
+  colors: {
+    :red    => "ff0000",
+    :yellow => "ffff00",
+    :blue   => "0000ff"
+  }
+)
+
+Looker::ROLES[:admin]    # => 1
+Looker::ROLES[3]         # => :writer
+
+Looker::COLORS[:red]     # => "ff0000"
+Looker::COLORS["ffff00"] # => :yellow
+```
+
+## Adding Enumerated Types from YAML
+
+It can be useful to manage enumerated type definitions with a YAML file.
+
+```yaml
+# /path/to/enums.yml
+roles:
+  admin: 1
+  reader: 2
+  writer: 3
+
+colors:
+  red: ff0000
+  yellow: ffff00
+  blue: 0000ff
+```
+
+```ruby
+Looker.add YAML.load(File.read("/path/to/enums.yml")
+
+Looker::ROLES["reader"]  # => 2
+Looker::ROLES[1]         # => "admin"
+
+Looker::COLORS["yellow"] # => "ffff00"
+Looker::COLORS["0000ff"] # => "blue"
 ```
 
 ## ActiveRecord enums
