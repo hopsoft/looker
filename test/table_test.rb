@@ -68,6 +68,24 @@ module Looker
       assert table[:a]
       assert table["a"]
     end
+
+    test "enumerable" do
+      assert @table.is_a?(Enumerable)
+      assert @table.respond_to?(:each)
+    end
+
+    test "each" do
+      colors = {}
+      @table.each do |key, value|
+        colors[key] = value
+      end
+      assert @table.to_h == colors
+    end
+
+    test "find" do
+      red = @table.find { |key, _| key == :red }
+      assert red == [:red, "#FF0000"]
+    end
   end
 end
 

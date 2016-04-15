@@ -71,5 +71,27 @@ module Looker
       assert table_b.to_h == { foo: true, bar: false }
     end
 
+    test "enumerable" do
+      assert Looker.is_a?(Enumerable)
+      assert Looker.respond_to?(:each)
+    end
+
+    test "to_a" do
+      Looker.add(to_a: {array: true})
+      a = Looker.to_a
+      assert a.size > 0
+    end
+
+    test "each" do
+      Looker.add(each: {enumerable: true})
+      table = nil
+      Looker.each { |t| table = t if t.name == "each" }
+      assert table
+    end
+
+    test "find" do
+      Looker.add(find: {enumerable: true})
+      assert Looker.find { |t| t.constant_name == "FIND" }
+    end
   end
 end

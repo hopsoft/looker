@@ -3,11 +3,10 @@ require "looker/version"
 require "looker/table"
 
 module Looker
-  extend Forwardable
-  include Enumerable
-  def_delegators :tables, :each
-
   class << self
+    extend Forwardable
+    include Enumerable
+    def_delegators :tables, :each
 
     def tables
       @tables ||= []
