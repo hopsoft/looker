@@ -94,7 +94,7 @@ Looker::COLORS["0000ff"] # => "blue"
 
 You may find it useful to reuse Looker defined enumerated types as [ActiveRecord enums](http://api.rubyonrails.org/classes/ActiveRecord/Enum.html).
 
-Fortunately this is pretty simple&mdash; use the `to_h` method on the Looker contant.
+Fortunately this is pretty simple&mdash; just use the `to_h` method on the Looker constant.
 
 ```ruby
 Looker.add roles: {
