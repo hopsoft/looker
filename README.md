@@ -25,17 +25,18 @@ Looker.add roles: {
 # The name (first Hash key) & value is converted
 # to an upcase named frozen constant on the Looker module
 
-Looker::ROLES[:admin]  # => 1
-Looker::ROLES[1]       # => :admin
+Looker::ROLES[:admin]   # => 1
+Looker::ROLES["admin"]  # => 1
+Looker::ROLES[1]        # => :admin
 
-Looker::ROLES[:reader] # => 2
-Looker::ROLES[2]       # => :reader
+Looker::ROLES[:reader]  # => 2
+Looker::ROLES["reader"] # => 2
+Looker::ROLES[2]        # => :reader
 
+Looker::ROLES[:writer]  # => 3
 Looker::ROLES["writer"] # => 3
-Looker::ROLES[3]       # => :writer
+Looker::ROLES[3]        # => :writer
 ```
-
-__NOTE:__ You can perform lookups using both the key & value.
 
 ## Multiple Enumerated Types
 
