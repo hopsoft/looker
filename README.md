@@ -36,6 +36,8 @@ Looker::ROLES[2]        # => :reader
 Looker::ROLES[:writer]  # => 3
 Looker::ROLES["writer"] # => 3
 Looker::ROLES[3]        # => :writer
+
+Looker::ROLES.to_h # => {:admin=>1, :reader=>2, :writer=>3}
 ```
 
 ## Multiple Enumerated Types
