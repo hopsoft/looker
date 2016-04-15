@@ -8,3 +8,47 @@
 # Looker
 
 ## Hash based enumerated types (ENUMS)
+
+## Quick Start
+
+```
+gem install looker
+```
+
+```ruby
+Looker.add roles: {
+  :admin  => 1,
+  :reader => 2,
+  :writer => 3
+}
+
+# The name (first Hash key) is converted to an upper case contant
+# available on the Looker module
+
+Looker::ROLES[:admin]  # => 1
+Looker::ROLES[1]       # => :admin
+
+Looker::ROLES[:reader] # => 2
+Looker::ROLES[2]       # => :reader
+
+Looker::ROLES[:writer] # => 3
+Looker::ROLES[3]       # => :writer
+
+## ActiveRecord enums
+
+You may find it useful to reuse Looker defined enumerated types as [ActiveRecord enums](http://api.rubyonrails.org/classes/ActiveRecord/Enum.html).
+
+Fortunately this is pretty simple&mdash; use the `to_h` method on the Looker contant.
+
+```ruby
+Looker.add roles: {
+  :admin  => 1,
+  :reader => 2,
+  :writer => 3
+}
+
+class User < ActiveRecord::Base
+  enum roles: Looker::ROLES.to_h
+end
+```
+

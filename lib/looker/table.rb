@@ -20,6 +20,10 @@ module Looker
       freeze
     end
 
+    def to_h
+      rows
+    end
+
     private
 
     attr_reader :dict

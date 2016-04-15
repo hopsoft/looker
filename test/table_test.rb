@@ -49,6 +49,13 @@ module Looker
       assert @table["#FFFF00"] == :yellow
     end
 
+    test "to_h" do
+      assert @table.to_h == {
+        :red    => "#FF0000",
+        :blue   => "#0000FF",
+        :yellow => "#FFFF00"
+      }
+    end
   end
 end
 
