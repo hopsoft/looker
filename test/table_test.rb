@@ -82,6 +82,14 @@ module Looker
       assert @table.to_h == colors
     end
 
+    test "keys" do
+      assert @table.keys == [:red, :blue, :yellow]
+    end
+
+    test "values" do
+      assert @table.values == ["#FF0000", "#0000FF", "#FFFF00"]
+    end
+
     test "find" do
       red = @table.find { |key, _| key == :red }
       assert red == [:red, "#FF0000"]

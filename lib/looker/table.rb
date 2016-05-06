@@ -4,7 +4,7 @@ module Looker
   class Table
     extend Forwardable
     include Enumerable
-    def_delegators :entries, :each
+    def_delegators :entries, :each, :keys, :values
     attr_reader :name, :constant_name, :entries
 
     def self.constant_name(name)
